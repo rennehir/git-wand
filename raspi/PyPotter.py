@@ -17,7 +17,6 @@ from GitApi import GitApi
 
 # Check for required number of arguments
 if (len(sys.argv) < 3):
-    print(sys.argv)
     print("Incorrect number of arguments. Required Arguments: [video source url] [API URL]")
     sys.exit(0)
 
@@ -51,10 +50,10 @@ MinSpellLength = 15
 MinSpellDistance = 100
 
 # Booleans to turn on or off output windows
-IsShowOriginal = False
-IsShowBackgroundRemoved = False
-IsShowThreshold = False
-IsShowOutput = False
+IsShowOriginal = True
+IsShowBackgroundRemoved = True
+IsShowThreshold = True
+IsShowOutput = True
 
 if IsShowOutputWindows:
     IsShowOriginal = True
@@ -179,19 +178,19 @@ def PerformSpell(spell):
     Make the desired Home Assistant REST API call based on the spell
     """
     if (spell=="incendio"):
-        magic.MakeMagic("automation.wand_incendio")
+        magic.MakeMagic("incendio")
     elif (spell=="aguamenti"):
-        magic.MakeMagic("automation.wand_aguamenti")
+        magic.MakeMagic("aguamenti")
     elif (spell=="alohomora"):
-        magic.MakeMagic("automation.wand_alohomora")
+        magic.MakeMagic("alohomora")
     elif (spell=="silencio"):
-        magic.MakeMagic("automation.wand_silencio")
+        magic.MakeMagic("silencio")
     elif (spell=="specialis_revelio"):
-        magic.MakeMagic("automation.wand_specialis_revelio")
+        magic.MakeMagic("specialis_revelio")
     elif (spell=="revelio"):
-        magic.MakeMagic("automation.wand_revelio")
+        magic.MakeMagic("revelio")
     elif (spell == "tarantallegra"):
-        magic.MakeMagic("automation.wand_tarantallegra")
+        magic.MakeMagic("tarantallegra")
 
 def CheckForPattern(wandTracks, exampleFrame):
     """
@@ -290,11 +289,10 @@ def CalculateThreshold():
             if IsRemoveBackground:
                 IsNewFrameNoBackground = False
                 frame_gray = cv2.cvtColor(frame_no_background, cv2.COLOR_BGR2GRAY)
-
+            
             if not IsRemoveBackground:
                 IsNewFrame = False
                 frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
             ret, frameThresh = cv2.threshold(frame_gray, thresholdValue, 255, cv2.THRESH_BINARY);
 
             IsNewFrameThreshold = True
@@ -313,7 +311,7 @@ def ProcessData():
     oldFrameThresh = None
     trackedPoints = None
     t = threading.currentThread()
-    
+
     while getattr(t, "do_run", True):
         if (IsNewFrameThreshold):
             IsNewFrameThreshold = False
@@ -322,12 +320,13 @@ def ProcessData():
             if (findNewWands):
                 # Identify Potential Wand Tips using GoodFeaturesToTrack
                 trackedPoints = cv2.goodFeaturesToTrack(localFrameThresh, 5, .01, 30)
+
                 if trackedPoints is not None:
                     findNewWands = False
             else:
                 # calculate optical flow
                 nextPoints, statusArray, err = cv2.calcOpticalFlowPyrLK(oldFrameThresh, localFrameThresh, trackedPoints, None, **lk_params)
-           
+
                 # Select good points
                 good_new = nextPoints[statusArray==1]
                 good_old = trackedPoints[statusArray==1]
@@ -342,7 +341,7 @@ def ProcessData():
            
                     # Update which points are tracked
                     trackedPoints = good_new.copy().reshape(-1,1,2)
-           
+
                     wandTracks = CheckForPattern(wandTracks, localFrameThresh)
            
                 else:
@@ -361,6 +360,7 @@ def ProcessData():
 def AddIterationsPerSecText(frame, iterations_per_sec):
     """
     Add iterations per second text to lower-left corner of a frame.
+    FRAMES UPDATE OK
     """
     cv2.putText(frame, "{:.0f} iterations/sec".format(iterations_per_sec),
         (10, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255))
@@ -399,21 +399,21 @@ while True:
     if (ret):
         frame = localFrame.copy()
         # If successful, flip the frame and set the Flag for the next process to take over
-        cv2.flip(frame, 1, frame) # Flipping the frame is done so the spells look like what we expect, instead of the mirror image
+        # cv2.flip(frame, 1, frame) # Flipping the frame is done so the spells look like what we expect, instead of the mirror image
         IsNewFrame = True
 
         # Update Windows
         if (IsShowOriginal):
             frameWithCounts = AddIterationsPerSecText(frame.copy(), originalCps.countsPerSec())
             cv2.imshow("Original", frameWithCounts)
-        
+            cv2.waitKey(1)
     else:
         # If an error occurred, try initializing the video capture again
         videoCapture = cv2.VideoCapture(videoSource)
 
     # Check for ESC key, if pressed shut everything down
-    if (cv2.waitKey(1) is 27):
-        break
+    # if (cv2.waitKey(1) is 27):
+    #     break
 
 # Shutdown PyPotter
 if IsRemoveBackground:
