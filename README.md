@@ -1,80 +1,63 @@
 # git-wand
 
-One Paragraph of project description goes here
+Git-Wand is a Python project allowing you to make git operations via a magic wand.
+
+For more detailed information, refer to the images below:
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Install dependencies --> Build magic wand --> assemble pi-camera --> stream video over local network
+```
+python PyPotter.py http://192.168.43.94:8080/?action=stream www.google.com False True False
+```
+
+For more detailed information, refer to the images below:
+
+![wand](https://i.imgur.com/PrHO4Wy.jpg "wand wiring diagram")
+
+![architecture](https://i.imgur.com/RP5whRH.jpg "software architecture diagram")
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Things you need to install the software and how to install them
 
 ```
-Give examples
+1. Be a wizard
+2. Have a wand
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+# Available spells (susceptible to change)
 
 ```
-Give the example
+Incendio: plays a loud burping sound
+Aguamenti: plays a loud burping sound
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+No testing, just magic
 
 ### Break down into end to end tests
 
 Explain what these tests test and why
 
 ```
-Give an example
+why
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency Management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+- Python
+- OpenCV
+- lots of cofveve
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/rennehir/git-wand/graphs/contributors) who participated in this project.
 
 ## License
 
@@ -82,6 +65,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+Git-Wand shares inspiration and code from the following projects:  
+
+PyPotter - https://github.com/adamthole/PyPotter
+Raspberry Potter - https://github.com/sean-obrien/rpotter/  
+pi_to_potter - https://github.com/mamacker/pi_to_potter  
+computer-vision - https://github.com/nrsyed/computer-vision  
