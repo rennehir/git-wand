@@ -1,10 +1,4 @@
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
+# HELLO
 
 import sys
 import cv2
@@ -19,7 +13,7 @@ import threading
 from threading import Thread
 from statistics import mean 
 from CountsPerSec import CountsPerSec
-from HassApi import HassApi
+from GitApi import GitApi
 
 # Check for required number of arguments
 if (len(sys.argv) < 4):
@@ -28,8 +22,7 @@ if (len(sys.argv) < 4):
 
 # Parse Required Arguments
 videoSource = sys.argv[1]
-hassUrl = sys.argv[2]
-hassRestToken = sys.argv[3]
+apiUrl = sys.argv[2]
 
 # Parse Optional Arguments
 IsRemoveBackground = True
@@ -45,8 +38,8 @@ if (len(sys.argv) >= 6):
 if (len(sys.argv) >= 7):
     IsTraining = sys.argv[6] == "True"
 
-# Initialize Home Assistant Rest API Wrapper
-hass = HassApi(hassUrl, hassRestToken)
+# Initialize REST API Wrapper
+magic = GitApi(apiUrl)
 
 # Constants
 TrainingResolution = 50
@@ -185,19 +178,19 @@ def PerformSpell(spell):
     Make the desired Home Assistant REST API call based on the spell
     """
     if (spell=="incendio"):
-        hass.TriggerAutomation("automation.wand_incendio")
+        magic.MakeMagic("automation.wand_incendio")
     elif (spell=="aguamenti"):
-        hass.TriggerAutomation("automation.wand_aguamenti")
+        magic.MakeMagic("automation.wand_aguamenti")
     elif (spell=="alohomora"):
-        hass.TriggerAutomation("automation.wand_alohomora")
+        magic.MakeMagic("automation.wand_alohomora")
     elif (spell=="silencio"):
-        hass.TriggerAutomation("automation.wand_silencio")
+        magic.MakeMagic("automation.wand_silencio")
     elif (spell=="specialis_revelio"):
-        hass.TriggerAutomation("automation.wand_specialis_revelio")
+        magic.MakeMagic("automation.wand_specialis_revelio")
     elif (spell=="revelio"):
-        hass.TriggerAutomation("automation.wand_revelio")
+        magic.MakeMagic("automation.wand_revelio")
     elif (spell == "tarantallegra"):
-        hass.TriggerAutomation("automation.wand_tarantallegra")
+        magic.MakeMagic("automation.wand_tarantallegra")
 
 def CheckForPattern(wandTracks, exampleFrame):
     """
