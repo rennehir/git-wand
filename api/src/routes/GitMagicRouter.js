@@ -1,13 +1,7 @@
-'use strict';
-module.exports = function(app) {
-  var vessels = require('../controllers/VesselController');
+const gitMagic = require("../controllers/GitMagicController");
 
-  // todoList Routes
-  app.route('/vessels')
-    .get(vessels.list_all_vessels)
-    .post(vessels.add_a_vessel);
+module.exports = app => {
+  app.route("/simsalabim").get(gitMagic.add);
 
-
-  app.route('/vessels/:SHIP_ID')
-    .get(vessels.get_a_vessel);
+  app.route("/avada-kedavra").get(gitMagic.remove);
 };
