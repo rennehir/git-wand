@@ -1,6 +1,12 @@
 # PyPotter
 
-PyPotter is a Python project allowing you to control your Home Assistant based smart home via a magic wand.
+Git-Wand is a Python project allowing you to make git operations via a magic wand.
+
+For more detailed information, refer to the images below:
+
+![wand](https://imgur.com/a/6c2JVuQ "wand wiring diagram")
+
+![architecture](https://imgur.com/a/Ze3qyce "software architecture diagram")
 
 For now, more complete information can be found here: https://www.adamthole.com/category/smart-home/
 
