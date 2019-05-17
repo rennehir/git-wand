@@ -1,11 +1,17 @@
 const gitMagic = require("../controllers/GitMagicController");
 
 module.exports = app => {
-  app.route("/simsalabim").get(gitMagic.add);
+  app.route("/api/gitmagic/aguamenti").get(gitMagic.add);
 
-  app.route("/avada-kedavra").get(gitMagic.remove);
+  app.route("/api/gitmagic/avada-kedavra").get(gitMagic.remove);
 
-  app.route("/royh").get(gitMagic.braap);
+  app.route("/api/gitmagic/incendio").get(gitMagic.braap);
 
-  app.route("/blame").get(gitMagic.blame);
+  app.route("/api/gitmagic/blame").get(gitMagic.blame);
+
+  app.route("/api/gitmagic/reparo").get(gitMagic.braap);
+  app.route("/api/gitmagic/revelio").get(gitMagic.braap);
+  app.route("/api/gitmagic/silencio").get(gitMagic.braap);
+  app.route("/api/gitmagic/specialis_revelio").get(gitMagic.braap);
+  app.route("/api/gitmagic/tarantallegra").get(gitMagic.braap);
 };

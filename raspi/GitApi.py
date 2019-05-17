@@ -1,7 +1,6 @@
 # THIS IS WHERE API CALL ARE MADE FROM
 
 import requests
-import json
 
 class GitApi:
     """ SUPER AWESOME REST API CALLS """
@@ -11,9 +10,9 @@ class GitApi:
         
     def MakeMagic(self, name):
         print("The spell was: ", name)
-        # url = self.url + "/api/gitmagic"
-        # headers = {}
-        # payload = {"spell": name}
-        # response = requests.post(url, data=json.dumps(payload), headers=headers)
-        # print(response.text)
+        url = self.url + "/api/gitmagic/" + name
+        print(url)
+        headers = {}
+        response = requests.get(url, headers=headers)
+        print(response.text)
 
