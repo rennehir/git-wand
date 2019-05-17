@@ -16,8 +16,9 @@ from CountsPerSec import CountsPerSec
 from GitApi import GitApi
 
 # Check for required number of arguments
-if (len(sys.argv) < 4):
-    print("Incorrect number of arguments. Required Arguments: [video source url] [home assistant URL] [API token]")
+if (len(sys.argv) < 3):
+    print(sys.argv)
+    print("Incorrect number of arguments. Required Arguments: [video source url] [API URL]")
     sys.exit(0)
 
 # Parse Required Arguments
@@ -29,14 +30,14 @@ IsRemoveBackground = True
 IsShowOutputWindows = True
 IsTraining = False
 
+if (len(sys.argv) >= 4):
+    IsRemoveBackground = sys.argv[3] == "True"
+
 if (len(sys.argv) >= 5):
-    IsRemoveBackground = sys.argv[4] == "True"
+    IsShowOutputWindows = sys.argv[4] == "True"
 
 if (len(sys.argv) >= 6):
-    IsShowOutputWindows = sys.argv[5] == "True"
-
-if (len(sys.argv) >= 7):
-    IsTraining = sys.argv[6] == "True"
+    IsTraining = sys.argv[5] == "True"
 
 # Initialize REST API Wrapper
 magic = GitApi(apiUrl)
