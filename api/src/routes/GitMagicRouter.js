@@ -4,4 +4,6 @@ module.exports = app => {
   app.route("/simsalabim").get(gitMagic.add);
 
   app.route("/avada-kedavra").get(gitMagic.remove);
+
+  app.route("/royh").get(gitMagic.braap);
 };
