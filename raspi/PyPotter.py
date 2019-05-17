@@ -399,21 +399,21 @@ while True:
     if (ret):
         frame = localFrame.copy()
         # If successful, flip the frame and set the Flag for the next process to take over
-        # cv2.flip(frame, 1, frame) # Flipping the frame is done so the spells look like what we expect, instead of the mirror image
+        cv2.flip(frame, 1, frame) # Flipping the frame is done so the spells look like what we expect, instead of the mirror image
         IsNewFrame = True
 
         # Update Windows
         if (IsShowOriginal):
             frameWithCounts = AddIterationsPerSecText(frame.copy(), originalCps.countsPerSec())
             cv2.imshow("Original", frameWithCounts)
-            cv2.waitKey(1)
+            #cv2.waitKey(1)
     else:
         # If an error occurred, try initializing the video capture again
         videoCapture = cv2.VideoCapture(videoSource)
 
     # Check for ESC key, if pressed shut everything down
-    # if (cv2.waitKey(1) is 27):
-    #     break
+    if (cv2.waitKey(1) is 27):
+         break
 
 # Shutdown PyPotter
 if IsRemoveBackground:
