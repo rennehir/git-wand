@@ -151,7 +151,8 @@ def ClassifyImage(img):
     Classify input image based on previously trained k-Nearest Neighbor Algorithm
     """
     global knn, nameLookup, args
-
+    print("img", img)
+    print("img.size", img.size)
     if (img.size  <= 0):
         return "Error"
 
