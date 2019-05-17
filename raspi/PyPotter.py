@@ -243,7 +243,7 @@ def CheckForPattern(wandTracks, exampleFrame):
             PerformSpell(result)
             LastSpell = result
         find_new_wands = True
-        wandTracks.clear()
+        del wandTracks[:]
 
     if wand_path_frame is not None:
         if (IsShowOutput):
