@@ -31,5 +31,7 @@ exports.braap = (req, res) => {
 exports.blame = (req, res) => {
   const audioFile = __appDir + "/royh.mp3";
   play.sound(audioFile);
-  res.send("Blame");
+  simpleGit.log(["-1"], (error, result) => {
+    res.send(`You should probably blame ${result.latest.author_name}`);
+  });
 };
