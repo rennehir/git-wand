@@ -1,4 +1,4 @@
-const simpleGit = require("simple-git")();
+const simpleGit = require("simple-git")(process.env.REPO_ABSOLUTE_PATH || null);
 const player = require("play-sound")((opts = {}));
 const path = require("path");
 
