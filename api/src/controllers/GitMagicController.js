@@ -23,12 +23,7 @@ exports.remove = (req, res) => {
 };
 
 exports.braap = (req, res) => {
-  console.log("Röyh");
-  res.send("Röyh");
-};
-
-exports.braap = (req, res) => {
-  const audioFile = __appDir + "/royh.mp3";
+  const audioFile = __appDir + path.sep + "royh.mp3";
   play.sound(audioFile);
   res.send("Röyh");
 };
