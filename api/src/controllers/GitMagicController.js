@@ -1,5 +1,5 @@
-const simpleGit = require("simple-git")("/stupid-hack/stupid-repo");
-const play = require("play");
+//const simpleGit = require("simple-git")("/stupid-hack/stupid-repo");
+const player = require('play-sound')(opts = {})
 const path = require("path");
 
 const __appDir = path.dirname(require.main.filename);
@@ -24,12 +24,18 @@ exports.remove = (req, res) => {
 
 exports.braap = (req, res) => {
   const audioFile = __appDir + path.sep + "royh.mp3";
-  play.sound(audioFile);
+  player.play(audioFile, function (err) {
+    if (err) throw err;
+    console.log("Audio finished");
+  });
   res.send("Röyh");
 };
 
 exports.blame = (req, res) => {
-  const audioFile = __appDir + "/royh.mp3";
-  play.sound(audioFile);
+  const audioFile = __appDir + path.sep + "royh.mp3";
+  player.play(audioFile, function (err) {
+    if (err) throw err;
+    console.log("Audio finished");
+  });
   res.send("Blame");
 };
