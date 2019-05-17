@@ -1,3 +1,7 @@
+const play = require('play');
+const path = require('path'),
+  __appDir = path.dirname(require.main.filename);
+
 exports.add = (req, res) => {
   console.log("Add");
   res.send("Add");
@@ -9,6 +13,7 @@ exports.remove = (req, res) => {
 };
 
 exports.braap = (req, res) => {
-  console.log("Röyh");
+  var audioFile = __appDir + '/royh.mp3';
+  play.sound(audioFile);
   res.send("Röyh");
 };
