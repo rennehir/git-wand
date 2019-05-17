@@ -25,9 +25,9 @@ videoSource = sys.argv[1]
 apiUrl = sys.argv[2]
 
 # Parse Optional Arguments
-IsRemoveBackground = True
+IsRemoveBackground = False #improves performance
 IsShowOutputWindows = True
-IsTraining = False
+IsTraining = True
 
 if (len(sys.argv) >= 4):
     IsRemoveBackground = sys.argv[3] == "True"
@@ -201,7 +201,7 @@ def CheckForPattern(wandTracks, exampleFrame):
 
     if (wandTracks == None or len(wandTracks) == 0):
         return
-
+    print("Checking for pattern:", wandTracks)
     thickness = 10
     croppedMax =  TrainingResolution - thickness
 
