@@ -2,7 +2,6 @@
 
 Git-Wand is a Python project allowing you to make git operations via a magic wand.
 
-For more detailed information, refer to the images below:
 
 ## Getting Started
 
