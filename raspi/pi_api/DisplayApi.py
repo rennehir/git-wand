@@ -35,7 +35,7 @@ def killContributor():
     mylcd.lcd_display_string("Y U KILL FREND?", 2)
 
 @app.route('/api/display/blame', methods=['POST'])
-def create_blame:
+def create_blame():
     print(request)
     if not request.json or not 'spell' in request.json:
         abort(400)
