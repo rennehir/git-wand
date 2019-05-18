@@ -37,9 +37,7 @@ def killContributor():
 @app.route('/api/display/blame', methods=['POST'])
 def create_blame():
     print(request)
-    if not request.json or not 'spell' in request.json:
-        abort(400)
-    data = request.json['spell']
+    data = request
     blame(str(data))
     return jsonify(data), 201
 
