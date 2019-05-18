@@ -1,15 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const basePath = "/api/gitmagic"
 
 const app = express();
 const port = process.env.PORT || 3000;
+const routes = require("./src/routes/GitMagicRouter"); //importing router
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-const routes = require("./src/routes/GitMagicRouter"); //importing route
-routes(app); //register the route
+app.use(basePath, routes); //register the router
 
 app.listen(port);
 

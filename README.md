@@ -66,7 +66,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Git-Wand shares inspiration and code from the following projects:  
 
-PyPotter - https://github.com/adamthole/PyPotter
+PyPotter - https://github.com/adamthole/PyPotter  
 Raspberry Potter - https://github.com/sean-obrien/rpotter/  
 pi_to_potter - https://github.com/mamacker/pi_to_potter  
 computer-vision - https://github.com/nrsyed/computer-vision  
