@@ -3,8 +3,10 @@ const simpleGit = require("simple-git/promise")(
 );
 const player = require("play-sound")((opts = {}));
 const path = require("path");
+const prependFile = require("prepend-file");
 
 const commitMessage = require("../utils/commitMessage");
+const dadJokes = require("../utils/dadJokes");
 const getCurrentBranch = require("../utils/currentBranch");
 const killCollaborator = require("../utils/killCollaborator");
 
@@ -53,6 +55,21 @@ exports.braap = (req, res) => {
     if (err) res.send(err);
     console.log("That was a good burp");
   });
+};
+
+exports.joke = async (req, res) => {
+  const joke = await dadJokes();
+  prependFile(
+    process.env.REPO_ABSOLUTE_PATH + "/README.md",
+    joke + "\n\n",
+    err => {
+      if (err) {
+        res.send(err);
+      }
+      console.log("The '" + joke + "' was prepended to file!");
+      res.send(joke);
+    }
+  );
 };
 
 exports.blame = async (req, res) => {
