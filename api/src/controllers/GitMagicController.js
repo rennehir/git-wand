@@ -5,6 +5,7 @@ const player = require("play-sound")((opts = {}));
 const path = require("path");
 
 const commitMessage = require("../utils/commitMessage");
+const getCurrentBranch = require("../utils/currentBranch");
 
 const __appDir = path.dirname(require.main.filename);
 
@@ -21,10 +22,8 @@ exports.commit = async (req, res) => {
 };
 
 exports.push = async (req, res) => {
-  const { current: currentBranch } = await simpleGit
-    .branch()
-    .catch(console.log);
-  await simpleGit.push(["origin", currentBranch]);
+  const currentBranch = await getCurrentBranch(git);
+  await simpleGit.push(["origin", currentBranch]).catch(res.send);
   res.send("PUUUSH!");
 };
 
