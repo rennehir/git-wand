@@ -46,8 +46,8 @@ exports.remove = async (req, res) => {
 exports.braap = (req, res) => {
   res.send("Röyh");
   const audioFile = __appDir + path.sep + "royh.mp3";
-  player.play(audioFile, function(err) {
-    if (err) throw err;
+  player.play(audioFile, err => {
+    if (err) res.send(err);
     console.log("Audio finished");
   });
 };
