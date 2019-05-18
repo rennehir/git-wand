@@ -1,4 +1,4 @@
-# PyPotter
+# Git-Wand
 
 Git-Wand is a Python project allowing you to make git operations via a magic wand.
 
@@ -8,7 +8,10 @@ For more detailed information, refer to the images below:
 
 ![architecture](https://i.imgur.com/RP5whRH.jpg "software architecture diagram")
 
-For now, more complete information can be found here: https://www.adamthole.com/category/smart-home/
+# Available spells (susceptible to change)
+
+Incendio: plays a loud burping sound
+Aguamenti: plays a loud burping sound
 
 # Acknowledgements
 Git-Wand shares inspiration and code from the following projects:  
