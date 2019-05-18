@@ -45,7 +45,7 @@ magic = GitApi(apiUrl)
 TrainingResolution = 50
 TrainingNumPixels = TrainingResolution * TrainingResolution
 TrainingFolderName = "Training"
-SpellEndMovement = 0.5
+SpellEndMovement = 1
 MinSpellLength = 15
 MinSpellDistance = 100
 
