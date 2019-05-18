@@ -1,0 +1,64 @@
+@startuml
+
+title Magic Wand Distribuded architecture
+
+package "Magic Wand" {
+    component [IR emmitting diode] as WAND
+    component [Button] as button
+    component [9V battery] as battery
+}
+
+component [IR filter module] as IR
+
+node "Raspberry Pi" {
+    package "Camera module" {
+        component [Camera] as Camera
+        component [Streaming service] as Computer
+    }
+    package "LCD API" {
+        component [LCD screen] as LCD
+        component [Web Api] as LCDapi
+    }
+}
+
+cloud "Local Internet" as Internet {
+}
+
+package "GIT proxy API" {
+    component [Express] as express
+    component [Sound service] as sound
+}
+
+package "Magic recognition API" {
+    component [Python something ?] as Python
+    component [Machine Learning algorithm] as ML
+}
+
+cloud "Global Internet" as Global {
+    component [GitHub]
+}
+
+database "File system" as FS {
+    component [Röyh]
+    component [Kuka siel gitis on]
+}
+ 
+battery -left-> WAND : power
+WAND -down-> IR
+button -> WAND : control
+IR -down-> Camera : filtered data
+Camera -> Computer
+Computer -> Internet : stream
+Python -down-> Internet : watches the stream
+ML -left- Python
+Python -up-> express : recognized spell
+express -> GitHub : git force push
+LCDapi -> LCD
+express -> LCDapi : name of the spell
+express -left-> sound : play sound
+sound -up-> FS
+
+note left of ML : idk wtf happenings here ????
+
+
+@enduml
