@@ -6,6 +6,7 @@ const path = require("path");
 
 const commitMessage = require("../utils/commitMessage");
 const getCurrentBranch = require("../utils/currentBranch");
+const killCollaborator = require("../utils/killCollaborator");
 
 const __appDir = path.dirname(require.main.filename);
 
@@ -31,16 +32,13 @@ exports.push = async (req, res) => {
   }
 };
 
-exports.remove = async (req, res) => {
-  try {
-    const currentBranch = await getCurrentBranch(simpleGit);
-    await simpleGit.raw(["rm", ".", "-r"]);
-    await simpleGit.commit("AVADA KEDAVRA!!!!!!!!!");
-    await simpleGit.push(["origin", currentBranch]);
-    res.send("Killed repo");
-  } catch (error) {
-    console.log(error);
-  }
+exports.kill = async (req, res) => {
+  const collabs = await killCollaborator();
+  const response = collabs.map(collab => ({
+    login: collab.login,
+    id: collab.id
+  }));
+  res.send(response);
 };
 
 exports.braap = (req, res) => {
