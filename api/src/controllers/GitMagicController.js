@@ -3,8 +3,10 @@ const simpleGit = require("simple-git/promise")(
 );
 const player = require("play-sound")((opts = {}));
 const path = require("path");
+const prependFile = require("prepend-file");
 
 const commitMessage = require("../utils/commitMessage");
+const dadJokes = require("../utils/dadJokes");
 const getCurrentBranch = require("../utils/currentBranch");
 
 const __appDir = path.dirname(require.main.filename);
@@ -51,6 +53,17 @@ exports.braap = (req, res) => {
     console.log("Audio finished");
   });
 };
+
+exports.joke = async (req, res) => {
+  const { joke } = await dadJokes();
+  prependFile(process.env.REPO_ABSOLUTE_PATH+"/README.md", joke, function (err) {
+    if (err) {
+        res.send(err);
+    }
+    console.log("The '"+joke+"' was prepended to file!");
+    res.send(joke);
+  });
+}
 
 exports.blame = async (req, res) => {
   const audioFile = __appDir + path.sep + "kuka_gitis.mp3";
