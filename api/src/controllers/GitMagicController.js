@@ -49,7 +49,6 @@ exports.playTheme = (req, res) => {
 };
 
 exports.braap = (req, res) => {
-  res.send("Röyh");
   const audioFile = __appDir + path.sep + "royh.mp3";
   player.play(audioFile, err => {
     if (err) res.send(err);
@@ -67,7 +66,6 @@ exports.joke = async (req, res) => {
         res.send(err);
       }
       console.log("The '" + joke + "' was prepended to file!");
-      res.send(joke);
     }
   );
 };
