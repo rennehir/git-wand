@@ -1,9 +1,9 @@
 const gitMagic = require("../controllers/GitMagicController");
-const express = require('express');
+const express = require("express");
 const magicRouter = express.Router();
 
 magicRouter.use((req, res, next) => {
-  let SPELL = req.url.substring(1).toUpperCase()+"!!!!!!!!!!!!!!!";
+  let SPELL = req.url.substring(1).toUpperCase() + "!!!!!!!!!!!!!!!";
   console.log(SPELL);
   next();
 });
@@ -14,7 +14,7 @@ magicRouter.get("/reparo", gitMagic.blame);
 magicRouter.get("/revelio", gitMagic.blame);
 magicRouter.get("/silencio", gitMagic.braap);
 magicRouter.get("/tarantallegra", gitMagic.braap);
-magicRouter.get("/avada-kedavra", gitMagic.braap);
+magicRouter.get("/avada-kedavra", gitMagic.kill);
 magicRouter.get("/blame", gitMagic.blame);
 
 module.exports = magicRouter;
