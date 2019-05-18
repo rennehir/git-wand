@@ -22,9 +22,13 @@ exports.commit = async (req, res) => {
 };
 
 exports.push = async (req, res) => {
-  const currentBranch = await getCurrentBranch(simpleGit);
-  await simpleGit.push(["origin", currentBranch]).catch(res.send);
-  res.send("PUUUSH!");
+  try {
+    const currentBranch = await getCurrentBranch(simpleGit);
+    await simpleGit.push(["origin", currentBranch]);
+    res.send("PUUUSH!");
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 exports.remove = async (req, res) => {
