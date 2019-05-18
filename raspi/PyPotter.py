@@ -151,8 +151,7 @@ def ClassifyImage(img):
     Classify input image based on previously trained k-Nearest Neighbor Algorithm
     """
     global knn, nameLookup, args
-    print("img", img)
-    print("img.size", img.size)
+
     if (img.size  <= 0):
         return "Error"
 
@@ -227,7 +226,7 @@ def CheckForPattern(wandTracks, exampleFrame):
     sumDistances = sum(distances)
 
     contours, hierarchy = cv2.findContours(wand_path_frame,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-    print(avgMostRecentDistances, SpellEndMovement, len(distances), MinSpellLength)
+
     # Determine if wand stopped moving by looking at recent movement (avgMostRecentDistances), and check the length of distances to make sure the spell is reasonably long
     if (avgMostRecentDistances < SpellEndMovement and len(distances) > MinSpellLength):
         print("spell is reasonable")
