@@ -27,7 +27,7 @@ apiUrl = sys.argv[2]
 # Parse Optional Arguments
 IsRemoveBackground = False #improves performance
 IsShowOutputWindows = True
-IsTraining = True
+IsTraining = False
 
 if (len(sys.argv) >= 4):
     IsRemoveBackground = sys.argv[3] == "True"
