@@ -1,7 +1,10 @@
 from flask import Flask, request, abort, jsonify
-import lcd
+import I2C_LCD_driver
+import time
 
 app = Flask(__name__)
+
+mylcd = I2C_LCD_driver.lcd()
 
 @app.route('/')
 def index():
@@ -12,11 +15,17 @@ def create_task():
     print(request)
     if not request.json or not 'spell' in request.json:
         abort(400)
-    data = request.json['spell'],
-    print("TEXT TO PRINT: ", data)
-    lcd.announceSpell(data)
+    data = request.json['spell']
+    # dataArray = str(data).split("'")
+    # print("TEXT TO PRINT: ", dataArray[0])
+    announceSpell(str(data))
     return jsonify(data), 201
+
+def announceSpell(spell):
+    mylcd.lcd_clear()
+    mylcd.lcd_display_string("Spell cast:",1) 
+    mylcd.lcd_display_string(spell,2)   # Show spell
 
 
 if __name__ == '__main__':
-     app.run(port='5002', debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
