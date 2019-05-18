@@ -37,12 +37,21 @@ exports.kill = async (req, res) => {
   res.send(response);
 };
 
+exports.playTheme = (req, res) => {
+  const audioFile = __appDir + path.sep + "hp_theme.mp3";
+  player.play(audioFile, err => {
+    if (err) res.send(err);
+    console.log("Theme playing finished");
+  });
+  res.send("Playing now");
+};
+
 exports.braap = (req, res) => {
   res.send("Röyh");
   const audioFile = __appDir + path.sep + "royh.mp3";
   player.play(audioFile, err => {
     if (err) res.send(err);
-    console.log("Audio finished");
+    console.log("That was a good burp");
   });
 };
 
