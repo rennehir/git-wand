@@ -14,7 +14,7 @@ For more detailed information, refer to the images below:
 
 ![wand](https://i.imgur.com/PrHO4Wy.jpg "wand wiring diagram")
 
-![architecture](https://i.imgur.com/NMyLwnQr.jpg "software architecture diagram")
+![architecture](https://i.imgur.com/RP5whRH.jpg "software architecture diagram")
 
 
 ### Prerequisites
@@ -28,7 +28,7 @@ Things you need to install the software and how to install them
 
 # Available spells
 
-![spells](https://i.imgur.com/RP5whRH.jpg "available spells")
+![spells](https://i.imgur.com/NMyLwnQr.jpg "available spells")
 And also the letter R: guess what it does
 
 ## Running the tests
