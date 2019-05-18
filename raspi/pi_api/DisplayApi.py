@@ -43,7 +43,7 @@ def create_blame():
     blame(str(data))
     return jsonify(data), 201
 
-def blame():
+def blame(spell):
     mylcd.lcd_clear()
     mylcd.lcd_display_string("USER TO BLAME: ", 1)
     mylcd.lcd_display_string(spell, 2)
