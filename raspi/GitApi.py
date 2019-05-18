@@ -21,6 +21,10 @@ class GitApi:
         piPayload = {
             'spell': name
         }
+        if (name == "avada-kedavra"):
+            piPayload = {
+                'spell': "KILLED: " + response
+            }
         requests.post("http://192.168.43.94:3000/api/display", headers=piHeaders, data=json.dumps(piPayload))
         print(response.text)
 
