@@ -41,13 +41,16 @@ exports.blame = async (req, res) => {
   });
   try {
     const { files } = await simpleGit.diffSummary(["HEAD^1"]);
-    files.map(async file => {
-      const blame = await simpleGit.raw(["blame", file.file, "-p"]);
-      const rows = blame.split("\n");
-      const committerRows = rows.filter(row => row.includes("committer "));
-      const committer = committerRows[0].split(" ")[1];
-      res.send(`Gitis on ${committer}`);
-    });
+    const committers = await Promise.all(
+      files.map(async file => {
+        const blame = await simpleGit.raw(["blame", file.file, "-p"]);
+        const rows = blame.split("\n");
+        const committerRows = rows.filter(row => row.includes("committer "));
+        const committer = committerRows[0].split(" ")[1];
+        return committer;
+      })
+    );
+    res.send(`Gitis on ${committers[0]}`);
   } catch (error) {
     res.send(error);
   }
