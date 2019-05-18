@@ -11,7 +11,7 @@ magicRouter.get("/aguamenti", gitMagic.add);
 magicRouter.get("/alohomora", gitMagic.commit);
 magicRouter.get("/incendio", gitMagic.push);
 magicRouter.get("/reparo", gitMagic.blame);
-magicRouter.get("/revelio", gitMagic.blame);
+magicRouter.get("/revelio", gitMagic.joke);
 magicRouter.get("/silencio", gitMagic.braap);
 magicRouter.get("/tarantallegra", gitMagic.playTheme);
 magicRouter.get("/avada-kedavra", gitMagic.kill);

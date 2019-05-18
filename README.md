@@ -16,6 +16,7 @@ For more detailed information, refer to the images below:
 
 ![architecture](https://i.imgur.com/RP5whRH.jpg "software architecture diagram")
 
+
 ### Prerequisites
 
 Things you need to install the software and how to install them
@@ -25,12 +26,10 @@ Things you need to install the software and how to install them
 2. Have a wand
 ```
 
-# Available spells (susceptible to change)
+# Available spells
 
-```
-Incendio: plays a loud burping sound
-Aguamenti: plays a loud burping sound
-```
+![spells](https://i.imgur.com/NMyLwnQr.jpg "available spells")
+And also the letter R: guess what it does
 
 ## Running the tests
 
