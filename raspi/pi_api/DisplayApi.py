@@ -18,13 +18,21 @@ def create_task():
     data = request.json['spell']
     # dataArray = str(data).split("'")
     # print("TEXT TO PRINT: ", dataArray[0])
-    announceSpell(str(data))
+    if (str(data) == "avada-kedavra"):
+        killContributor()
+    else:
+        announceSpell(str(data))
     return jsonify(data), 201
 
 def announceSpell(spell):
     mylcd.lcd_clear()
     mylcd.lcd_display_string("Spell cast:",1) 
     mylcd.lcd_display_string(spell,2)   # Show spell
+
+def killContributor():
+    mylcd.lcd_clear()
+    mylcd.lcd_display_string("SUCH STUPID", 1)
+    mylcd.lcd_display_string("U KILL URSELF", 2)
 
 
 if __name__ == '__main__':
