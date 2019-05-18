@@ -33,11 +33,7 @@ exports.push = async (req, res) => {
 };
 
 exports.kill = async (req, res) => {
-  const collabs = await killCollaborator();
-  const response = collabs.map(collab => ({
-    login: collab.login,
-    id: collab.id
-  }));
+  const response = await killCollaborator().catch(console.log);
   res.send(response);
 };
 
