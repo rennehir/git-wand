@@ -185,8 +185,8 @@ def PerformSpell(spell):
         magic.MakeMagic("alohomora")
     elif (spell=="silencio"):
         magic.MakeMagic("silencio")
-    elif (spell=="specialis_revelio"):
-        magic.MakeMagic("specialis_revelio")
+    elif (spell=="reparo"):
+        magic.MakeMagic("reparo")
     elif (spell=="revelio"):
         magic.MakeMagic("revelio")
     elif (spell == "tarantallegra"):
