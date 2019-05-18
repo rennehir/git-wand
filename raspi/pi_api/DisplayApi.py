@@ -31,8 +31,8 @@ def announceSpell(spell):
 
 def killContributor():
     mylcd.lcd_clear()
-    mylcd.lcd_display_string("SUCH STUPID", 1)
-    mylcd.lcd_display_string("U KILL URSELF", 2)
+    mylcd.lcd_display_string("STUPID BOI,,", 1)
+    mylcd.lcd_display_string("Y U KILL FREND?", 2)
 
 
 if __name__ == '__main__':
