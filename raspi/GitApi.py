@@ -10,9 +10,10 @@ class GitApi:
         self.url = url
         
     def MakeMagic(self, name):
-        url = self.url + "/api/gitmagic"
-        headers = {}
-        payload = {"spell": name}
-        response = requests.post(url, data=json.dumps(payload), headers=headers)
-        print(response.text)
+        print("The spell was: ", name)
+        # url = self.url + "/api/gitmagic"
+        # headers = {}
+        # payload = {"spell": name}
+        # response = requests.post(url, data=json.dumps(payload), headers=headers)
+        # print(response.text)
 

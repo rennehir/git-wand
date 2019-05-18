@@ -17,7 +17,7 @@ class CountsPerSec:
     arbitrary event and returns the frequency in occurrences
     (counts) per second. The caller must increment the count.
     """
-
+  
     def __init__(self):
         self._SmoothingFactor = 90
         self._timeList = []
