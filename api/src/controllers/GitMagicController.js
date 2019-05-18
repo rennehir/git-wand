@@ -22,7 +22,7 @@ exports.commit = async (req, res) => {
 };
 
 exports.push = async (req, res) => {
-  const currentBranch = await getCurrentBranch(git);
+  const currentBranch = await getCurrentBranch(simpleGit);
   await simpleGit.push(["origin", currentBranch]).catch(res.send);
   res.send("PUUUSH!");
 };
