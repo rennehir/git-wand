@@ -25,12 +25,12 @@ exports.remove = async (req, res) => {
 };
 
 exports.braap = (req, res) => {
+  res.send("Röyh");
   const audioFile = __appDir + path.sep + "royh.mp3";
   player.play(audioFile, function(err) {
     if (err) throw err;
     console.log("Audio finished");
   });
-  res.send("Röyh");
 };
 
 exports.blame = async (req, res) => {
