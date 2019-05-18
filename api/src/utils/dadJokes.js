@@ -1,6 +1,13 @@
 const axios = require("axios");
 
 module.exports = async () => {
-  const jokeResponse = await axios.get("https://icanhazdadjoke.com/");
-  return jokeResponse;
+  const {
+    data: { joke }
+  } = await axios.get("https://icanhazdadjoke.com", {
+    headers: {
+      Accept: "application/json"
+    }
+  });
+  console.log(joke);
+  return joke;
 };

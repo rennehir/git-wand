@@ -55,15 +55,19 @@ exports.braap = (req, res) => {
 };
 
 exports.joke = async (req, res) => {
-  const { joke } = await dadJokes();
-  prependFile(process.env.REPO_ABSOLUTE_PATH+"/README.md", joke, function (err) {
-    if (err) {
+  const joke = await dadJokes();
+  prependFile(
+    process.env.REPO_ABSOLUTE_PATH + "/README.md",
+    joke + "\n\n",
+    err => {
+      if (err) {
         res.send(err);
+      }
+      console.log("The '" + joke + "' was prepended to file!");
+      res.send(joke);
     }
-    console.log("The '"+joke+"' was prepended to file!");
-    res.send(joke);
-  });
-}
+  );
+};
 
 exports.blame = async (req, res) => {
   const audioFile = __appDir + path.sep + "kuka_gitis.mp3";
