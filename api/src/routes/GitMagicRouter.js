@@ -1,17 +1,20 @@
 const gitMagic = require("../controllers/GitMagicController");
+const express = require('express');
+const magicRouter = express.Router();
 
-module.exports = app => {
-  app.route("/api/gitmagic/aguamenti").get(gitMagic.add);
-  app.route("/api/gitmagic/alohomora").get(gitMagic.commit);
-  app.route("/api/gitmagic/incendio").get(gitMagic.push);
+magicRouter.use((req, res, next) => {
+  let SPELL = req.url.substring(1).toUpperCase()+"!!!!!!!!!!!!!!!";
+  console.log(SPELL);
+  next();
+});
+magicRouter.get("/aguamenti", gitMagic.add);
+magicRouter.get("/alohomora", gitMagic.commit);
+magicRouter.get("/incendio", gitMagic.push);
+magicRouter.get("/reparo", gitMagic.blame);
+magicRouter.get("/revelio", gitMagic.blame);
+magicRouter.get("/silencio", gitMagic.braap);
+magicRouter.get("/tarantallegra", gitMagic.braap);
+magicRouter.get("/avada-kedavra", gitMagic.braap);
+magicRouter.get("/blame", gitMagic.blame);
 
-  app.route("/api/gitmagic/locomotor").get(gitMagic.blame);
-  app.route("/api/gitmagic/reparo").get(gitMagic.blame);
-  app.route("/api/gitmagic/revelio").get(gitMagic.blame);
-
-  app.route("/api/gitmagic/silencio").get(gitMagic.braap);
-  app.route("/api/gitmagic/tarantallegra").get(gitMagic.braap);
-
-  app.route("/api/gitmagic/avada-kedavra").get(gitMagic.remove);
-  app.route("/api/gitmagic/blame").get(gitMagic.blame);
-};
+module.exports = magicRouter;
