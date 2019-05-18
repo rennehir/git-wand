@@ -9,15 +9,15 @@ const commitMessage = require("../utils/commitMessage");
 const __appDir = path.dirname(require.main.filename);
 
 exports.add = async (req, res) => {
+  await simpleGit.add("./*").catch(res.send);
   res.send("ADDED");
-  await simpleGit.add("./*");
 };
 
 exports.commit = async (req, res) => {
   const { data } = await commitMessage();
   console.log(data);
+  await simpleGit.commit(data).catch(res.send);
   res.send(data);
-  await simpleGit.commit(data);
 };
 
 exports.push = async (req, res) => {
