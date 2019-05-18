@@ -10,7 +10,7 @@ class GitApi:
         
     def MakeMagic(self, name):
         print("The spell was: ", name)
-        url = self.url + "/api/gitmagic" + name
+        url = self.url + "/api/gitmagic/" + name
         headers = {}
         response = requests.get(url, headers=headers)
         print(response.text)
