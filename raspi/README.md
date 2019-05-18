@@ -4,9 +4,9 @@ Git-Wand is a Python project allowing you to make git operations via a magic wan
 
 For more detailed information, refer to the images below:
 
-![wand](https://imgur.com/a/6c2JVuQ "wand wiring diagram")
+![wand](hhttps://i.imgur.com/PrHO4Wy.jpg "wand wiring diagram")
 
-![architecture](https://imgur.com/a/Ze3qyce "software architecture diagram")
+![architecture](https://i.imgur.com/RP5whRH.jpg "software architecture diagram")
 
 For now, more complete information can be found here: https://www.adamthole.com/category/smart-home/
 
