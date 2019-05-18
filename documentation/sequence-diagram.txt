@@ -1,0 +1,37 @@
+@startuml
+
+title "Magic Sequence Diagram"
+
+actor Wizard
+box "Raspberry PI"
+    boundary "Camera module" as Camera
+    boundary "LCD api" as LCD
+    boundary "LCD display" as display
+
+end box
+participant "Local WEB" as internet
+control "Magic recognition API" as magic
+box "Git proxy API"
+    control "Express" as proxy
+    database Sounds as sounds
+end box
+participant "GitHub" as github
+
+
+Wizard -> Camera : Casts a spell
+Camera -> internet : Streams spell data
+magic -> internet : Gimme the stream
+internet -> magic : Here you go my dear
+magic -> magic : Recognizes magic with ML magic (copypasted)
+magic -> proxy : POST recognized spell
+proxy -> github : commands gits
+github -> proxy : ok thx
+proxy -> sounds : gimme sound to play
+sounds -> proxy : sound
+proxy -> proxy : play sound
+proxy -> LCD : send name of casted spell
+LCD -> display : display spell name
+display -> LCD : doned
+LCD -> proxy : spell displayed
+proxy -> magic : 200 ok
+@enduml
