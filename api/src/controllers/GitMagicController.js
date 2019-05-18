@@ -33,9 +33,10 @@ exports.push = async (req, res) => {
 
 exports.remove = async (req, res) => {
   try {
+    const currentBranch = await getCurrentBranch(simpleGit);
     await simpleGit.raw(["rm", ".", "-r"]);
     await simpleGit.commit("AVADA KEDAVRA!!!!!!!!!");
-    await simpleGit.push(["-u", "origin", "master"]);
+    await simpleGit.push(["origin", currentBranch]);
     res.send("Killed repo");
   } catch (error) {
     console.log(error);
