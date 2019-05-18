@@ -14,10 +14,10 @@ exports.add = async (req, res) => {
 };
 
 exports.commit = async (req, res) => {
-  const message = await commitMessage();
-  console.log(message);
-  res.send("Commit");
-  await simpleGit.commit("SIMSALABIM!!!");
+  const { data } = await commitMessage();
+  console.log(data);
+  res.send(data);
+  await simpleGit.commit(data);
 };
 
 exports.push = async (req, res) => {
