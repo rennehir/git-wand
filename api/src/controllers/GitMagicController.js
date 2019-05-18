@@ -4,6 +4,8 @@ const simpleGit = require("simple-git/promise")(
 const player = require("play-sound")((opts = {}));
 const path = require("path");
 
+const commitMessage = require("../utils/commitMessage");
+
 const __appDir = path.dirname(require.main.filename);
 
 exports.add = async (req, res) => {
@@ -12,6 +14,8 @@ exports.add = async (req, res) => {
 };
 
 exports.commit = async (req, res) => {
+  const message = await commitMessage();
+  console.log(message);
   res.send("Commit");
   await simpleGit.commit("SIMSALABIM!!!");
 };
