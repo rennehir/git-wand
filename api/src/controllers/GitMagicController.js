@@ -55,7 +55,7 @@ exports.braap = (req, res) => {
 exports.blame = async (req, res) => {
   const audioFile = __appDir + path.sep + "kuka_gitis.mp3";
   player.play(audioFile, function(err) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log("Audio finished");
   });
   try {
