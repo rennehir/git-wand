@@ -21,8 +21,11 @@ exports.commit = async (req, res) => {
 };
 
 exports.push = async (req, res) => {
+  const { current: currentBranch } = await simpleGit
+    .branch()
+    .catch(console.log);
+  await simpleGit.push(["origin", currentBranch]);
   res.send("PUUUSH!");
-  await simpleGit.push(["-u", "origin", "master"]);
 };
 
 exports.remove = async (req, res) => {
