@@ -7,9 +7,17 @@ const path = require("path");
 const __appDir = path.dirname(require.main.filename);
 
 exports.add = async (req, res) => {
-  res.send("ok");
+  res.send("ADDED");
   await simpleGit.add("./*");
-  await simpleGit.commit("SIMSALABIM!!!!");
+};
+
+exports.commit = async (req, res) => {
+  res.send("Commit");
+  await simpleGit.commit("SIMSALABIM!!!");
+};
+
+exports.push = async (req, res) => {
+  res.send("PUUUSH!");
   await simpleGit.push(["-u", "origin", "master"]);
 };
 
