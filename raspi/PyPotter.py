@@ -201,7 +201,7 @@ def CheckForPattern(wandTracks, exampleFrame):
 
     if (wandTracks == None or len(wandTracks) == 0):
         return
-    print("Checking for pattern:", wandTracks)
+
     thickness = 10
     croppedMax =  TrainingResolution - thickness
 
@@ -230,6 +230,7 @@ def CheckForPattern(wandTracks, exampleFrame):
 
     # Determine if wand stopped moving by looking at recent movement (avgMostRecentDistances), and check the length of distances to make sure the spell is reasonably long
     if (avgMostRecentDistances < SpellEndMovement and len(distances) > MinSpellLength):
+        print("spell is reasonable")
         # Make sure wand path is valid and is over the defined minimum distance
         if (len(contours) > 0) and sumDistances > MinSpellDistance:
             cnt = contours[0]
