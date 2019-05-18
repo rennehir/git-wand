@@ -191,6 +191,8 @@ def PerformSpell(spell):
         magic.MakeMagic("revelio")
     elif (spell == "tarantallegra"):
         magic.MakeMagic("tarantallegra")
+    elif (spell == "avada-kedavra"):
+        magic.MakeMagic("avada-kedavra")
 
 def CheckForPattern(wandTracks, exampleFrame):
     """
