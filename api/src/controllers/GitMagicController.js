@@ -87,7 +87,7 @@ exports.blame = async (req, res) => {
         return committer;
       })
     );
-    res.send(`Gitis on ${committers[0]}`);
+    res.send(committers[0]);
   } catch (error) {
     res.send(error);
   }

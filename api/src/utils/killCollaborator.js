@@ -19,21 +19,24 @@ module.exports = async () => {
     }
   }).catch(e => "Ur STUPUD");
 
-  if (
-    collaborators &&
-    collaborators.filter(c => c.login === GITHUB_OWN_USERNAME).length > 0
-  ) {
-    const response = await axios({
-      method: "DELETE",
-      url: `${REPO_URL}/collaborators/${GITHUB_OWN_USERNAME}`,
-      headers: {
-        Accept: "application/vnd.github.hellcat-preview+json",
-        Authorization: `token ${GITHUB_ACCESS_TOKEN}`
-      }
-    }).catch(console.log);
+  if (collaborators) {
+    const filtered = collaborators.filter(c => c.login !== GITHUB_OWN_USERNAME);
+    console.log(filtered);
+    const killPromises = filtered.map(c => {
+      const response = axios({
+        method: "DELETE",
+        url: `${REPO_URL}/collaborators/${c.login}`,
+        headers: {
+          Accept: "application/vnd.github.hellcat-preview+json",
+          Authorization: `token ${GITHUB_ACCESS_TOKEN}`
+        }
+      }).catch(console.log);
 
-    console.log(response);
-    return "KYS";
+      return response;
+    });
+    await Promise.all(killPromises);
+  } else {
+    console.log("No collaborators");
   }
 
   return "Not a collaborator";
